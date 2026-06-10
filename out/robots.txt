@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://buildnest.in
+Sitemap: https://buildnest.in/sitemap.xml
