@@ -79,7 +79,7 @@ export function Header() {
             <button className="h-10 rounded-md border border-white/20 px-4 text-sm font-semibold text-white hover:bg-white/10">Request Demo</button>
           </LeadDialog>
           <a href={site.appUrl} target="_blank" rel="noreferrer" className="h-10 rounded-md bg-aqua px-4 py-2 text-sm font-semibold text-ink hover:bg-mist">
-            Start Free Trial
+            Start Free
           </a>
         </div>
         <button className="rounded-md p-2 text-white lg:hidden" onClick={() => setOpen(!open)} aria-label="Open menu">
@@ -109,7 +109,7 @@ export function Header() {
             className="rounded-md bg-aqua px-3 py-2 text-sm font-bold text-ink"
             onClick={() => setOpen(false)}
           >
-            Start Free Trial
+            Start Free
           </a>
         </nav>
       </div>
@@ -186,7 +186,7 @@ export function HeroActions() {
         rel="noreferrer"
         className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-white/20 bg-white/10 px-5 text-sm font-bold text-white backdrop-blur hover:bg-white/15"
       >
-        Start Free Trial
+        Start Free
       </a>
       <a href="#product-tour" className="inline-flex h-12 items-center justify-center gap-2 rounded-md px-5 text-sm font-bold text-white hover:bg-white/10">
         <PlayCircle className="h-5 w-5" /> Watch Product Tour

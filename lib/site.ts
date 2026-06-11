@@ -27,15 +27,27 @@ import {
 export const site = {
   name: "Build Nest",
   tagline: "Manage • Build • Deliver",
-  url: "https://buildnest.in",
+  url: "https://buildnestonline.in",
   appUrl: "https://buildnest.fixlab.co.in/",
   developer: "SYSGO LLP",
   managedBy: "Fixlab",
-  email: "hello@buildnest.in",
-  phone: "+91 80758 15183",
+  email: "hello@buildnestonline.in",
+  supportEmail: "support@buildnestonline.in",
+  salesEmail: "sales@buildnestonline.in",
+  phone: "0476 2081156",
   whatsappNumber: "8075815183",
   whatsappCountryCode: "91",
-  address: "Build Nest Office, India"
+  address: "SYSGO LLP, Technopark Back Gate side, Trivandrum, 695581",
+  offices: [
+    {
+      name: "SYSGO LLP",
+      address: "Technopark Back Gate side, Trivandrum, 695581"
+    },
+    {
+      name: "FIXLAB",
+      address: "2nd floor, Federal Bank Building, Vallikavu, Kollam, 690525"
+    }
+  ]
 };
 
 export const navLinks = [
@@ -263,29 +275,29 @@ export const benefitList = [
 
 export const pricingTiers = [
   {
-    name: "Starter",
-    price: "₹1,999",
-    suffix: "/month",
-    description: "For small contractors digitizing core execution.",
-    features: ["5 Users", "2 Projects", "Attendance", "Tasks", "Reports"]
+    name: "Free",
+    price: "Free",
+    suffix: "forever",
+    description: "Explore essential Build Nest workflows before choosing a paid plan.",
+    features: ["Core Access", "Demo Workspace", "Mobile Access", "Reports", "WhatsApp Enquiry Support"]
   },
   {
-    name: "Growth",
-    price: "₹4,999",
+    name: "Starter",
+    price: "₹199",
     suffix: "/month",
-    description: "For growing teams adding procurement and billing control.",
-    features: ["25 Users", "10 Projects", "Materials", "Procurement", "Billing", "Reports"],
-    highlighted: true
+    description: "For small teams starting with essential construction control.",
+    features: ["Starter Access", "Projects", "Attendance", "Tasks", "Reports"]
   },
   {
     name: "Professional",
-    price: "₹9,999",
+    price: "₹499",
     suffix: "/month",
-    description: "For established construction companies running complete operations.",
-    features: ["100 Users", "Unlimited Projects", "All Modules", "Priority Support", "Advanced Reports"]
+    description: "For teams that need complete modules and stronger reporting.",
+    features: ["Professional Access", "All Modules", "Advanced Reports", "Priority Support", "Mobile App"],
+    highlighted: true
   },
   {
-    name: "Enterprise",
+    name: "Custom",
     price: "Custom",
     suffix: "pricing",
     description: "For large, multi-branch, white-label or dedicated infrastructure needs.",
@@ -308,10 +320,10 @@ export const faqs = [
   ["What is Build Nest?", "Build Nest is a construction management SaaS platform for managing projects, tasks, workforce, materials, procurement, billing, assets, subcontractors and reports."],
   ["Who developed Build Nest?", "Build Nest is developed by SYSGO LLP and managed by Fixlab."],
   ["Is Build Nest suitable for Indian construction companies?", "Yes. The product is designed for Indian builders, contractors, EPC teams, site supervisors and construction companies with workflows such as GST billing, WhatsApp login and site attendance."],
-  ["How much does Build Nest cost?", "Plans start at ₹1,999 per month for Starter, ₹4,999 for Growth, ₹9,999 for Professional and custom pricing for Enterprise."],
+  ["How much does Build Nest cost?", "Build Nest offers a free plan, Starter at ₹199 per month, Professional at ₹499 per month, and custom pricing for larger requirements."],
   ["Can I request a demo?", "Yes. You can request a product demo from the contact page or any Request Demo button on the website."],
-  ["Is there a free trial?", "The website includes a Start Free Trial CTA. Trial activation can be configured by the Build Nest sales team based on rollout policy."],
-  ["Does Build Nest support multiple projects?", "Yes. Depending on the plan, teams can manage 2 projects, 10 projects or unlimited projects."],
+  ["Is there a free plan?", "Yes. Build Nest offers a free plan so teams can evaluate essential workflows before choosing a paid plan."],
+  ["Does Build Nest support multiple projects?", "Yes. Depending on the plan, teams can manage starter, professional or custom project requirements."],
   ["Does Build Nest have role-based access?", "Yes. Admins can configure roles and permissions for managers, engineers, supervisors, accounts teams and other users."],
   ["How does WhatsApp login work?", "Build Nest supports WhatsApp OTP-based access flows so field teams can sign in with a familiar mobile channel."],
   ["Can site attendance be tracked?", "Yes. Attendance includes GPS attendance, geofencing concepts, site check-in and check-out workflows."],
@@ -330,9 +342,9 @@ export const faqs = [
   ["Is tenant data isolated?", "Yes. Tenant isolation is part of the platform security model."],
   ["Who owns the data?", "Customers own their project, workforce, commercial and operational data."],
   ["Does Build Nest support backups?", "The platform architecture includes backup-ready operational practices."],
-  ["Can Build Nest integrate with other tools?", "Enterprise plans can support custom integrations based on technical and business requirements."],
+  ["Can Build Nest integrate with other tools?", "Custom plans can support integrations based on technical and business requirements."],
   ["How fast can Build Nest be deployed?", "Deployment depends on company size and configuration, but the product is designed for fast SaaS onboarding."],
-  ["Is training available?", "Dedicated support and onboarding can be provided, especially for Professional and Enterprise plans."],
+  ["Is training available?", "Dedicated support and onboarding can be provided, especially for Professional and Custom plans."],
   ["Can government contractors use it?", "Yes. Government contractors can use Build Nest for projects, documentation, procurement, billing and reporting workflows."],
   ["How do I contact sales?", "Use the contact page, schedule meeting CTA, WhatsApp enquiry or lead form to reach the Build Nest team."]
 ];
@@ -372,7 +384,7 @@ export const routeMeta: Record<string, { title: string; description: string }> =
   },
   "/pricing": {
     title: "Build Nest Pricing | Construction Management SaaS Plans",
-    description: "Compare Starter, Growth, Professional and Enterprise pricing plans for Build Nest construction management software."
+    description: "Compare Build Nest's Free, Starter, Professional and Custom pricing plans."
   },
   "/about-us": {
     title: "About Build Nest | Developed by SYSGO LLP",
@@ -385,6 +397,30 @@ export const routeMeta: Record<string, { title: string; description: string }> =
   "/contact": {
     title: "Contact Build Nest | Request Demo & Sales Enquiry",
     description: "Contact Build Nest for demo requests, WhatsApp enquiries, sales questions and implementation discussions."
+  },
+  "/privacy-policy": {
+    title: "Build Nest Privacy Policy",
+    description: "Read the Build Nest privacy policy covering data collection, usage, security, retention, user rights and contact details."
+  },
+  "/terms-and-conditions": {
+    title: "Build Nest Terms and Conditions",
+    description: "Read the BuildNest terms and conditions for platform use, subscriptions, payments, acceptable use, data ownership and legal terms."
+  },
+  "/refund-policy": {
+    title: "Build Nest Refund and Cancellation Policy",
+    description: "Read the BuildNest refund and cancellation policy covering subscription payments, cancellations, duplicate payments, failed transactions and refund timelines."
+  },
+  "/cookie-policy": {
+    title: "Build Nest Cookie Policy",
+    description: "Read the BuildNest cookie policy covering essential cookies, analytics, security, third-party services and cookie controls."
+  },
+  "/data-retention-policy": {
+    title: "Build Nest Data Retention Policy",
+    description: "Read the BuildNest data retention policy covering storage, backups, deletion requests, legal holds, retention periods and data security."
+  },
+  "/security-policy": {
+    title: "Build Nest Security Policy",
+    description: "Read the BuildNest security policy covering access controls, customer data protection, monitoring, incident response and vulnerability reporting."
   },
   "/faq": {
     title: "Build Nest FAQ | Pricing, Security, Mobile Apps & Support",

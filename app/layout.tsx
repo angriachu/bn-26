@@ -9,6 +9,27 @@ import { site, seoKeywords } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
+const suppressInjectedDevError = `
+  (() => {
+    const isInjectedNoise = (value) => {
+      const message = String(value && (value.message || value.reason || value) || "");
+      return message.includes("_0x829cee") || message.includes("_0x259c40");
+    };
+
+    window.addEventListener("error", (event) => {
+      if (!isInjectedNoise(event.error || event.message)) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }, true);
+
+    window.addEventListener("unhandledrejection", (event) => {
+      if (!isInjectedNoise(event.reason)) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }, true);
+  })();
+`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -53,19 +74,50 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web, Android, iOS",
     description: metadata.description,
+    url: site.url,
     brand: { "@type": "Brand", name: site.name },
     creator: { "@type": "Organization", name: site.developer },
-    provider: { "@type": "Organization", name: site.managedBy },
+    provider: {
+      "@type": "Organization",
+      name: site.managedBy,
+      email: site.supportEmail,
+      telephone: site.phone,
+      address: site.offices.map((office) => ({
+        "@type": "PostalAddress",
+        name: office.name,
+        streetAddress: office.address,
+        addressCountry: "IN"
+      }))
+    },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: site.salesEmail,
+        telephone: site.phone,
+        areaServed: "IN"
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: site.supportEmail,
+        telephone: site.phone,
+        areaServed: "IN"
+      }
+    ],
     offers: {
       "@type": "AggregateOffer",
-      lowPrice: "1999",
+      lowPrice: "0",
       priceCurrency: "INR"
     }
   };
 
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="font-sans antialiased">
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <body className="font-sans antialiased" suppressHydrationWarning>
+        {process.env.NODE_ENV === "development" ? (
+          <Script id="suppress-injected-dev-error" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: suppressInjectedDevError }} />
+        ) : null}
         <Header />
         <main>{children}</main>
         <Footer />
@@ -80,7 +132,7 @@ function Footer() {
   const columns = [
     { title: "Product", links: ["Features", "Pricing", "Mobile App", "Security"] },
     { title: "Resources", links: ["Blog", "FAQ", "Whitepaper", "Product Tour"] },
-    { title: "Company", links: ["About Us", "Contact", "Request Demo", "Schedule Meeting"] }
+    { title: "Company", links: ["About Us", "Contact", "Privacy Policy", "Terms and Conditions", "Refund Policy", "Cookie Policy", "Data Retention Policy", "Security Policy", "Request Demo", "Schedule Meeting"] }
   ];
 
   return (
@@ -98,6 +150,11 @@ function Footer() {
             India-focused construction management SaaS for projects, workforce, procurement, billing, assets, documents and reports.
           </p>
           <p className="mt-5 text-sm text-white/60">Developed by {site.developer}. Managed by {site.managedBy}.</p>
+          <div className="mt-5 grid gap-1 text-sm text-white/60">
+            <a href={`mailto:${site.email}`} className="hover:text-mist">{site.email}</a>
+            <a href={`mailto:${site.supportEmail}`} className="hover:text-mist">{site.supportEmail}</a>
+            <a href={`tel:${site.phone.replaceAll(" ", "")}`} className="hover:text-mist">{site.phone}</a>
+          </div>
         </div>
         <div className="grid gap-8 sm:grid-cols-3">
           {columns.map((column) => (

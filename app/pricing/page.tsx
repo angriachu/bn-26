@@ -17,7 +17,7 @@ export default function PricingPage() {
         </div>
       </section>
       <Section className="bg-white">
-        <div className="grid gap-5 lg:grid-cols-4">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {pricingTiers.map((tier) => (
             <div key={tier.name} className={`rounded-lg border p-6 shadow-sm ${tier.highlighted ? "border-aqua bg-ink text-white shadow-glow" : "border-slate-200 bg-white text-copy"}`}>
               <p className="text-sm font-bold uppercase tracking-[0.16em] text-aqua">{tier.name}</p>
@@ -67,16 +67,16 @@ export default function PricingPage() {
 
 function valueFor(row: string, tier: string) {
   const matrix: Record<string, Record<string, string>> = {
-    Users: { Starter: "5", Growth: "25", Professional: "100", Enterprise: "Unlimited" },
-    Projects: { Starter: "2", Growth: "10", Professional: "Unlimited", Enterprise: "Unlimited" },
-    Attendance: { Starter: "Included", Growth: "Included", Professional: "Included", Enterprise: "Included" },
-    Tasks: { Starter: "Included", Growth: "Included", Professional: "Included", Enterprise: "Included" },
-    Materials: { Starter: "Basic", Growth: "Included", Professional: "Advanced", Enterprise: "Advanced" },
-    Procurement: { Starter: "Add-on", Growth: "Included", Professional: "Advanced", Enterprise: "Advanced" },
-    Billing: { Starter: "Add-on", Growth: "Included", Professional: "Advanced", Enterprise: "Advanced" },
-    Reports: { Starter: "Standard", Growth: "Standard", Professional: "Advanced", Enterprise: "Custom" },
-    "Priority Support": { Starter: "Email", Growth: "Email", Professional: "Included", Enterprise: "Dedicated" },
-    "White Label": { Starter: "No", Growth: "No", Professional: "No", Enterprise: "Yes" }
+    Users: { Free: "Free access", Starter: "Starter", Professional: "Professional", Custom: "Custom" },
+    Projects: { Free: "Free workspace", Starter: "Starter limit", Professional: "Higher limit", Custom: "Custom" },
+    Attendance: { Free: "Included", Starter: "Included", Professional: "Included", Custom: "Included" },
+    Tasks: { Free: "Included", Starter: "Included", Professional: "Included", Custom: "Included" },
+    Materials: { Free: "Included", Starter: "Basic", Professional: "Advanced", Custom: "Advanced" },
+    Procurement: { Free: "Included", Starter: "Basic", Professional: "Advanced", Custom: "Advanced" },
+    Billing: { Free: "Included", Starter: "Basic", Professional: "Advanced", Custom: "Advanced" },
+    Reports: { Free: "Included", Starter: "Standard", Professional: "Advanced", Custom: "Custom" },
+    "Priority Support": { Free: "Community support", Starter: "Email", Professional: "Priority", Custom: "Dedicated" },
+    "White Label": { Free: "No", Starter: "No", Professional: "No", Custom: "Yes" }
   };
   return matrix[row][tier];
 }

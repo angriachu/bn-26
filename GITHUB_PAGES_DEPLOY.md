@@ -11,11 +11,13 @@ This site is configured for free GitHub Pages hosting as a static Next.js export
 5. Push to `main`.
 6. The workflow `.github/workflows/deploy-github-pages.yml` will build and publish the site.
 
-The published URL will usually be:
+The production domain is:
 
 ```text
-https://YOUR_GITHUB_USERNAME.github.io/REPOSITORY_NAME/
+https://buildnestonline.in/
 ```
+
+Add `buildnestonline.in` as the custom domain in GitHub Pages settings. The exported site includes `public/CNAME`, so GitHub Pages will keep the domain after deployment.
 
 ## Enquiry Collection
 
@@ -29,10 +31,4 @@ The message includes enquiry type, name, company, email, phone, requirement, and
 
 ## Custom Domain Note
 
-The GitHub Actions workflow builds with:
-
-```text
-NEXT_PUBLIC_BASE_PATH=/${{ github.event.repository.name }}
-```
-
-This is correct for normal GitHub project pages. If you later connect a custom root domain such as `buildnest.in`, remove the `NEXT_PUBLIC_BASE_PATH` line from the workflow.
+The GitHub Actions workflow is configured for the custom root domain, so it builds without `NEXT_PUBLIC_BASE_PATH`. This keeps CSS, JavaScript, images, sitemap and robots paths rooted at `https://buildnestonline.in/`.

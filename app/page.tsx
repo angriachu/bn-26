@@ -139,8 +139,8 @@ export default function Home() {
       </Section>
 
       <Section className="dark-band text-white">
-        <SectionIntro eyebrow="Pricing" title="Premium SaaS pricing for growing construction teams" body="Start lean, scale across sites, and move to Enterprise when you need custom infrastructure, integrations or white-label deployment." align="center" tone="dark" />
-        <div className="grid gap-5 lg:grid-cols-4">
+        <SectionIntro eyebrow="Pricing" title="Premium SaaS pricing for growing construction teams" body="Start with a free plan, then choose Starter, Professional or a Custom plan as your construction operations grow." align="center" tone="dark" />
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {pricingTiers.map((tier) => (
             <div key={tier.name} className={`rounded-lg p-6 ${tier.highlighted ? "bg-white text-copy shadow-glow" : "glass text-white"}`}>
               <p className="text-sm font-bold uppercase tracking-[0.16em] text-aqua">{tier.name}</p>

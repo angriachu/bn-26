@@ -59,7 +59,7 @@ export function WhatsAppEnquiryForm({ intent = "Website Enquiry", compact = fals
       ) : (
         <select name="enquiryType" className={inputLarge} defaultValue={intent}>
           <option>Request Demo</option>
-          <option>Start Free Trial</option>
+          <option>Start Free</option>
           <option>Contact Sales</option>
           <option>Schedule Meeting</option>
           <option>{intent}</option>
