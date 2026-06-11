@@ -6,12 +6,6 @@ import { Maximize2, X } from "lucide-react";
 import { featureModules } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-function assetSrc(src: string) {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-  if (!basePath || src.startsWith("http")) return src;
-  return `${basePath}${src}`;
-}
-
 const mobileScreens = [
   { title: "Today command centre", src: "/mobile/today.jpg", body: "Portfolio health, open work, material flow and project analytics for management review." },
   { title: "Projects", src: "/mobile/projects.jpg", body: "Track active sites, budgets, progress and work packages from the field." },
@@ -42,7 +36,7 @@ export function AppScreenshotFrame({
     <div className={cn("relative overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-glow backdrop-blur", compact ? "h-[260px]" : "h-[430px]")}>
       <div className="relative h-full overflow-hidden rounded-md bg-[#071E2D]">
         <img
-          src={assetSrc(src)}
+          src={src}
           alt={title}
           loading={priority ? "eager" : "lazy"}
           className={cn("h-full w-full object-cover object-top", compact ? "transition duration-500 group-hover:scale-[1.03]" : "")}
@@ -85,7 +79,7 @@ export function MobileScreenshotFrame({
   return (
     <div className={cn("mx-auto w-full max-w-[260px] rounded-[2rem] border-[10px] border-ink bg-ink p-2 shadow-premium", className)}>
       <div className="relative aspect-[1264/2638] overflow-hidden rounded-[1.35rem] bg-pearl">
-        <img src={assetSrc(src)} alt={`${title} mobile app screenshot`} loading="lazy" className="h-full w-full object-cover object-top" />
+        <img src={src} alt={`${title} mobile app screenshot`} loading="lazy" className="h-full w-full object-cover object-top" />
       </div>
     </div>
   );
@@ -138,7 +132,7 @@ export function ScreenshotGallery({ group }: { group?: string }) {
             </Dialog.Close>
             {active ? (
               <div className="rounded-md bg-ink p-4">
-                <img src={assetSrc(active.screenshot)} alt={`${active.title} full screenshot`} className="mx-auto h-auto w-full rounded-md" />
+                <img src={active.screenshot} alt={`${active.title} full screenshot`} className="mx-auto h-auto w-full rounded-md" />
               </div>
             ) : null}
             {active ? <Dialog.Title className="px-2 pt-4 text-xl font-bold text-copy">{active.title} Screenshot Preview</Dialog.Title> : null}
